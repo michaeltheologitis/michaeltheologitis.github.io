@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "/bin/zsh",
+      "runtimeArgs": [
+        "-c",
+        "export PATH=/opt/homebrew/opt/ruby@3.4/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/bin:$PATH; exec bundle exec jekyll serve --livereload --port 4000"
+      ],
+      "port": 4000
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{%- comment -%}
+  al-folio's bib layout includes this hook right before it prints the venue line under each paper.
+  When an entry has a short `venue` (e.g. "NeurIPS 2026", "Preprint"), show just that instead of
+  "In <booktitle>, <year>".
+{%- endcomment -%}
+{%- if entry.venue -%}
+  {%- capture entrytype -%}<em>{{ entry.venue }}</em>{%- endcapture -%}
+  {%- assign entrymonth = '' -%}
+  {%- assign entryyear = '' -%}
+{%- endif -%}
