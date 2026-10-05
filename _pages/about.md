@@ -119,7 +119,7 @@ I'm a PhD student in Computer Science & Engineering at the University of Washing
 
 My research interests center around enabling models to manage, reuse, and self-organize their accumulating context in long-horizon tasks—from harnesses and meta-harnesses to context engineering and memory.
 
-More broadly, I care about making it possible for people like journalists, lawyers, and scientists to ask difficult questions over large collections of structured and unstructured data, while ensuring that the answers are inspectable, trustworthy, and transparent.
+More broadly, I care about making it possible for people like journalists, lawyers, and scientists to ask complex questions over large collections of structured and unstructured data, while ensuring that the answers are inspectable, trustworthy, and transparent.
 
 Feel free to reach out at <a href="mailto:{{ 'mthe@cs.washington.edu' | encode_email }}">mthe [at] cs.washington.edu</a> if you are interested in my work!
 
