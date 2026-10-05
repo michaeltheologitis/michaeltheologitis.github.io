@@ -9,12 +9,12 @@ profile:
   image_circular: false # crops the image to make it circular
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: false # social icons are in the top bar instead (enable_navbar_social in _config.yml)
+social: false # the social icons are under the bio instead (see .bio-socials below)
 
 announcements:
   enabled: true # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  limit: # blank = all news; the list scrolls (see the style block below)
 
 latest_posts:
   enabled: false
@@ -39,8 +39,34 @@ latest_posts:
     }
   }
   @media (min-width: 576px) {
-    .profile {
-      width: 25%;
+    /* photo (25% wide) and bio side by side; the social icons sit at the bottom of the bio column, just above
+       the bottom of the photo (or right after the text, if the bio ever gets taller than the photo) */
+    article {
+      display: grid;
+      grid-template-columns: calc(25% + 1rem) 1fr;
+    }
+    article > * {
+      grid-column: 1 / -1;
+    }
+    article > .profile {
+      grid-column: 1;
+      width: auto;
+    }
+    article > .profile figure {
+      margin-bottom: 0;
+    }
+    article > .profile + .clearfix {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+    }
+    .bio-socials {
+      margin-top: auto;
+      margin-bottom: 0.6rem;
+    }
+    /* keep the old gap above "news" (the photo's figure margin no longer adds to it) */
+    article > .clearfix + h2 {
+      margin-top: 3rem;
     }
     /* line the paper pictures up with the top of the title text */
     .publications .preview {
@@ -56,16 +82,45 @@ latest_posts:
     font-size: 0.75rem;
     margin-top: -0.4rem;
   }
+  /* social icons under the bio */
+  .bio-socials {
+    line-height: 1;
+  }
+  .bio-socials a {
+    font-size: 1.9rem;
+    margin-right: 0.9rem;
+    color: var(--global-text-color);
+  }
+  .bio-socials a:hover {
+    color: var(--global-theme-color);
+  }
   /* tighter news list */
   .news td,
   .news th {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
   }
+  /* scrollable news: about four items visible, scroll for the rest
+     (overrides al-folio's inline max-height: 60vw, which never kicks in on laptops) */
+  .news .table-responsive {
+    max-height: 9rem !important;
+    overflow-y: auto;
+  }
+  @media (max-width: 575.98px) {
+    .news .table-responsive {
+      max-height: 15rem !important;
+    }
+  }
 </style>
 
-Hi! I'm Michael, a PhD student in the [Paul G. Allen School of Computer Science & Engineering](https://www.cs.washington.edu/) at the University of Washington, where I'm co-advised by [Yulia Tsvetkov](https://homes.cs.washington.edu/~yuliats/) and [Dan Suciu](https://homes.cs.washington.edu/~suciu/).
+Hi! 👋
 
-My goal is to enable non-technical users to analyze and extract high-quality information from large, complex datasets with minimal effort, using only natural-language descriptions. My current work focuses on LLM-based single- and multi-agent systems, where I study and improve how these systems are deployed and orchestrated in open-ended data environments.
+I'm a PhD student in Computer Science & Engineering at the University of Washington, co-advised by [Yulia Tsvetkov](https://homes.cs.washington.edu/~yuliats/) and [Dan Suciu](https://homes.cs.washington.edu/~suciu/).
 
-Before UW, I did my undergraduate and master's studies at the [Technical University of Crete](https://www.tuc.gr/en/home) in Greece, where I worked on communication-efficient federated learning with [Antonios Deligiannakis](http://users.softnet.tuc.gr/~adeli/) and Vasilis Samoladas.
+My research interests center around enabling models to manage, reuse, and self-organize their accumulating context in long-horizon tasks—from harnesses and meta-harnesses to context engineering and memory.
+
+More broadly, I care about making it possible for people like journalists, lawyers, and scientists to ask difficult questions over large collections of structured and unstructured data, while ensuring that the answers are inspectable, trustworthy, and transparent.
+
+Feel free to reach out at <a href="mailto:{{ 'mthe@cs.washington.edu' | encode_email }}">mthe [at] cs.washington.edu</a> if you are interested in my work!
+
+<div class="bio-socials">{% social_links %}</div>

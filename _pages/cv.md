@@ -4,6 +4,7 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 5
+published: false # hidden until assets/pdf/cv.pdf exists; delete this line to show the CV page
 ---
 
 {% assign cv_pdf = site.static_files | where: "path", "/assets/pdf/cv.pdf" | first %}
