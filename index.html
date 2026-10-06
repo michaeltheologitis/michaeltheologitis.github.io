@@ -59,10 +59,19 @@
   article > h2 {
     margin-top: 2rem;
   }
+  /* same gap between the news and "selected publications" as above "news" */
+  article > .news + h2 {
+    margin-top: 3rem;
+  }
   /* small "* denotes equal contribution" note right under "selected publications" */
   .equal-contribution-note {
     font-size: 0.75rem;
     margin-top: -0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  /* the note's margin above is enough; on the grid layout the two margins would add up */
+  article > .publications {
+    margin-top: 0;
   }
   /* social icons under the bio */
   .bio-socials {
