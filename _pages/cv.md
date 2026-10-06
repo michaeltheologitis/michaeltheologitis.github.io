@@ -4,7 +4,6 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 5
-published: false # hidden until assets/pdf/cv.pdf exists; delete this line to show the CV page
 ---
 
 {% assign cv_pdf = site.static_files | where: "path", "/assets/pdf/cv.pdf" | first %}
@@ -14,7 +13,7 @@ published: false # hidden until assets/pdf/cv.pdf exists; delete this line to sh
   <p>
     <a href="{{ cv_pdf.path | relative_url }}" download>Download PDF <i class="fa-solid fa-file-arrow-down"></i></a>
   </p>
-  <embed src="{{ cv_pdf.path | relative_url }}" type="application/pdf" width="100%" height="900px">
+  <embed src="{{ cv_pdf.path | relative_url }}#view=FitH&navpanes=0" type="application/pdf" width="100%" height="900px">
 </div>
 {% else %}
 <div>
