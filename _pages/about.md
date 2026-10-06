@@ -126,7 +126,7 @@ Hi! 👋
 
 I'm a PhD student in Computer Science & Engineering at the [University of Washington](https://www.washington.edu/), co-advised by [Yulia Tsvetkov](https://homes.cs.washington.edu/~yuliats/) and [Dan Suciu](https://homes.cs.washington.edu/~suciu/).
 
-My research interests center around enabling models to manage, reuse, and self-organize their accumulating context in long-horizon tasks—from harnesses and meta-harnesses to context engineering and memory.
+My research interests center around enabling models to manage, reuse, and self-organize their accumulating context in long-horizon tasks—from context engineering and memory to harnesses and meta-harnesses.
 
 More broadly, I care about making it possible for people like journalists, lawyers, and scientists to ask complex questions over large collections of structured and unstructured data, while ensuring that the answers are inspectable, trustworthy, and transparent.
 
