@@ -1,8 +1,9 @@
 ---
 ---
 {%- comment -%}
-  Local copy of al_folio_core 1.0.15's _layouts/bib.liquid. Only change: the abstract button says
-  "Abstract" instead of "Abs". The short venue line comes from _includes/hook/bib.liquid.
+  Local copy of al_folio_core 1.0.15's _layouts/bib.liquid. Changes: the abstract button says
+  "Abstract" instead of "Abs", and the text column fills the rest of the paper card (col-sm-10, not
+  col-sm-8). The short venue line comes from _includes/hook/bib.liquid.
 {%- endcomment -%}
 <div class="row">
   {% if site.enable_publication_thumbnails %}
@@ -66,7 +67,7 @@
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-10{% else %}col-sm-10{% endif %}">
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->

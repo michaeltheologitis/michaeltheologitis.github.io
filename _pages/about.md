@@ -33,10 +33,6 @@ latest_posts:
     .profile + .clearfix {
       clear: both;
     }
-    /* keep paper thumbnails mini on phones (al-folio stretches them to full width) */
-    .publications .preview {
-      max-width: 45%;
-    }
   }
   @media (min-width: 576px) {
     /* photo (25% wide) and bio side by side; the social icons sit at the bottom of the bio column, just above
@@ -67,10 +63,6 @@ latest_posts:
     /* keep the old gap above "news" (the photo's figure margin no longer adds to it) */
     article > .clearfix + h2 {
       margin-top: 3rem;
-    }
-    /* line the paper pictures up with the top of the title text */
-    .publications .preview {
-      margin-top: 0.5rem;
     }
   }
   /* a bit more room above "news" and "selected publications" */
@@ -109,18 +101,53 @@ latest_posts:
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
   }
-  /* scrollable news: about four items visible, scroll for the rest
-     (overrides al-folio's inline max-height: 60vw, which never kicks in on laptops) */
+  /* scrollable news inside a faint rounded border, so it reads as one box while scrolling */
+  :root {
+    --news-border-color: rgba(0, 0, 0, 0.06);
+  }
+  html[data-theme="dark"] {
+    --news-border-color: rgba(255, 255, 255, 0.08);
+  }
+  .news {
+    border: 1px solid var(--news-border-color);
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+  }
+  /* about four items visible, scroll for the rest (overrides al-folio's inline max-height: 60vw, which never
+     kicks in on laptops); the items near the bottom fade out until the list is scrolled to the end */
   .news .table-responsive {
-    max-height: 9rem !important;
+    max-height: 9.25rem !important;
     overflow-y: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent);
+  }
+  .news .table-responsive.at-end {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .news table {
+    margin-bottom: 0;
   }
   @media (max-width: 575.98px) {
     .news .table-responsive {
-      max-height: 15rem !important;
+      max-height: 15.25rem !important;
     }
   }
 </style>
+
+<script>
+  // drop the news fade once the list is scrolled to the end (or if it doesn't scroll at all)
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".news .table-responsive").forEach(function (box) {
+      function update() {
+        box.classList.toggle("at-end", box.scrollTop + box.clientHeight >= box.scrollHeight - 2);
+      }
+      box.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      update();
+    });
+  });
+</script>
 
 Hi! 👋
 
