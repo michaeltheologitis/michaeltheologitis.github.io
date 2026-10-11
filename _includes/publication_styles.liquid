@@ -1,17 +1,22 @@
 {%- comment -%}
   Paper list styles shared by the homepage (selected papers) and the publications page:
-  each paper is a soft rounded card with its thumbnail centered vertically, and the venue is a small blue pill.
+  each paper is a soft rounded card with its thumbnail centered vertically, and the venue is a small blue pill
+  (grey for arXiv preprints; the hook in _includes/hook/bib.liquid adds the venue-preprint class).
 {%- endcomment -%}
 <style>
   :root {
     --paper-card-bg: #f6f7f9;
     --venue-bg: #e6effa;
     --venue-color: #2f5f9e;
+    --venue-preprint-bg: rgba(96, 107, 112, 0.11);
+    --venue-preprint-color: #606b70;
   }
   html[data-theme="dark"] {
     --paper-card-bg: rgba(255, 255, 255, 0.04);
     --venue-bg: rgba(110, 165, 255, 0.16);
     --venue-color: #a8c8ff;
+    --venue-preprint-bg: rgba(255, 255, 255, 0.08);
+    --venue-preprint-color: #a6b0b4;
   }
   .publications ol.bibliography li {
     background-color: var(--paper-card-bg);
@@ -40,6 +45,10 @@
     font-size: 0.8rem;
     background-color: var(--venue-bg);
     color: var(--venue-color);
+  }
+  .publications .venue-preprint {
+    background-color: var(--venue-preprint-bg);
+    color: var(--venue-preprint-color);
   }
   /* keep paper thumbnails mini on phones (al-folio stretches them to full width) */
   @media (max-width: 575.98px) {

@@ -1,10 +1,15 @@
 {%- comment -%}
   al-folio's bib layout includes this hook right before it prints the venue line under each paper.
-  When an entry has a short `venue` (e.g. "NeurIPS 2026", "Preprint"), show just that instead of
-  "In <booktitle>, <year>", as a small pill (styled in _includes/publication_styles.liquid).
+  When an entry has a short `venue` (e.g. "NeurIPS 2026", "arXiv 2026"), show just that instead of
+  "In <booktitle>, <year>", as a small pill (styled in _includes/publication_styles.liquid); arXiv
+  preprints get a quieter grey pill.
 {%- endcomment -%}
 {%- if entry.venue -%}
-  {%- capture entrytype -%}<span class="venue">{{ entry.venue }}</span>{%- endcapture -%}
+  {%- assign venue_class = 'venue' -%}
+  {%- if entry.journal contains 'arXiv' or entry.type == 'misc' or entry.type == 'unpublished' -%}
+    {%- assign venue_class = 'venue venue-preprint' -%}
+  {%- endif -%}
+  {%- capture entrytype -%}<span class="{{ venue_class }}">{{ entry.venue }}</span>{%- endcapture -%}
   {%- assign entrymonth = '' -%}
   {%- assign entryyear = '' -%}
 {%- endif -%}
