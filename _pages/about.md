@@ -36,7 +36,8 @@ latest_posts:
   }
   @media (min-width: 576px) {
     /* photo (25% wide) and bio side by side; the social icons sit at the bottom of the bio column, just above
-       the bottom of the photo (or right after the text, if the bio ever gets taller than the photo) */
+       the bottom of the photo. When the bio is taller than the photo, the photo centers against the text and
+       icons instead of hugging the top (lifted a few pixels, which looked better than exact centering). */
     article {
       display: grid;
       grid-template-columns: calc(25% + 1rem) 1fr;
@@ -47,6 +48,9 @@ latest_posts:
     article > .profile {
       grid-column: 1;
       width: auto;
+      align-self: center;
+      position: relative;
+      top: -4px;
     }
     article > .profile figure {
       margin-bottom: 0;
